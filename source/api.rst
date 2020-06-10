@@ -237,17 +237,17 @@ To get the Onefootball post ID for an article so that you can reference it in up
 
    .. code-block:: python
 
-   		import requests
+        import requests
 
-   		headers = {
-   		    'Authorization': 'Bearer TOKEN',
-   		}
+        headers = {
+            'Authorization': 'Bearer TOKEN',
+        }
 
-   		params = (
-   		    ('external_id', 'EXTERNAL_ID'),
-   		)
+        params = (
+            ('external_id', 'EXTERNAL_ID'),
+        )
 
-   		response = requests.get('https://network.onefootball.com/v1/posts/', headers=headers, params=params)
+        response = requests.get('https://network.onefootball.com/v1/posts/', headers=headers, params=params)
 
 
 
@@ -284,26 +284,26 @@ To do so, take the example below and do the following:
 
    .. code-block:: python
 
-    	import requests
+        import requests
 
-    	headers = {
-    	    'Authorization': 'Bearer TOKEN',
-    	}
-    	
-    	data = {
-    	    "external_id": "ARTICLE_ID",
-    	    "site_id": SITE_ID,
-    	    "source_url": "ARTICLE_URL",
-    	    "language":  "en",
-    	    "published": "2010-01-02T15:04:05Z",
-    	    "content":  "Article content",
-    	    "title":  "Article title"
-    	    "image_url":  "https://your-blog.com/images/1.png",
-    	    "image_width":  200,
-    	    "image_height":  100
-    	}
-    	
-    	response = requests.put('https://network.onefootball.com/v1/posts/POST_ID', headers=headers, data=data)
+        headers = {
+            'Authorization': 'Bearer TOKEN',
+        }
+        
+        data = {
+            "external_id": "ARTICLE_ID",
+            "site_id": SITE_ID,
+            "source_url": "ARTICLE_URL",
+            "language":  "en",
+            "published": "2010-01-02T15:04:05Z",
+            "content":  "Article content",
+            "title":  "Article title"
+            "image_url":  "https://your-blog.com/images/1.png",
+            "image_width":  200,
+            "image_height":  100
+        }
+        
+        response = requests.put('https://network.onefootball.com/v1/posts/POST_ID', headers=headers, data=data)
 
 
 
@@ -318,7 +318,9 @@ To do so, take the example below and do the following:
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``language``    | required | The language of the article. Valid choices are ``en``, ``de``, ``es``, ``fr``, ``br``, and ``it``.                                                                                                                                            |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``published``   | required | The time that the article was published. If in doubt, use the current time.                                                                                                                                                                   |
+| ``published``   | required | The time that the article was originally published.                                                                                                                                                                                           |
++-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``modified``    | required | The time that the article was last updated. If in doubt, use the current time.                                                                                                                                                                |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``content``     | required | The content of the article, which must be in correctly-formatted HTML. Please see `this link <https://static.onefootball.com/onefootball-network/technical-documentation/html-guidelines>`_ for important details on acceptable HTML content. |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -348,13 +350,13 @@ To do so, take the example below and do the following:
 
    .. code-block:: python
 
-    	import requests
+        import requests
 
-    	headers = {
-    	    'Authorization': 'Bearer TOKEN',
-    	}
+        headers = {
+            'Authorization': 'Bearer TOKEN',
+        }
 
-    	response = requests.delete('https://network.onefootball.com/v1/posts/POST_ID', headers=headers)
+        response = requests.delete('https://network.onefootball.com/v1/posts/POST_ID', headers=headers)
 
 
 

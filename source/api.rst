@@ -1,5 +1,5 @@
 Onefootball Network API
-====================
+=======================
 
 Introduction
 ------------
@@ -21,7 +21,7 @@ Before you get started, please note the conventions listed here, which apply thr
 Schema
 ~~~~~~
 
-All API access is over HTTPS. All data is sent and received in JSON format. 
+All API access is over HTTPS. All data is sent and received in JSON format.
 
 Access is from the following URLs:
 
@@ -57,13 +57,13 @@ In order to publish, update or delete content on Onefootball via the Onefootball
 
 
 Activating your Onefootball Network account
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Onefootball Network in an invitation-only platform. If you are invited to join and have agreed to come onboard, you will receive a registration email. Please follow the instructions in the registration email, set your password and then proceed to log in to the Onefootball Network portal. Make sure to complete the onboarding process in the portal before trying to publish content via the Onefootball Network API.
 
 
 Retrieving an authentication token
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Once you have successfully logged in to the Onefootball Network portal, you can use the same email address and password credentials to obtain an authentication token for the Onefootball Network API.
 
@@ -91,15 +91,43 @@ You must have a valid authentication token in order to publish, modify, or delet
 
       response = requests.post('https://network.onefootball.com/v1/login', headers=headers, data=data)
 
+   .. code-block:: go
+
+      type Payload struct {
+       Login    string `json:"login"`
+       Password string `json:"password"`
+      }
+
+      data := Payload{
+      // fill struct
+      }
+      payloadBytes, err := json.Marshal(data)
+      if err != nil {
+       // handle err
+      }
+      body := bytes.NewReader(payloadBytes)
+
+      req, err := http.NewRequest("POST", "https://network.onefootball.com/v1/login", body)
+      if err != nil {
+       // handle err
+      }
+      req.Header.Set("Content-Type", "application/json")
+
+      resp, err := http.DefaultClient.Do(req)
+      if err != nil {
+       // handle err
+      }
+      defer resp.Body.Close()
+
 
 Refreshing an authentication token
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Each authentication token is valid for seven days after it is issued. After a token expires, repeat the process by using your login credentials to acquire a new one.
 
 
 Listing all registered sites
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to publish content, you must specify which of your websites the content belongs to. Many accounts on Onefootball will only have one website.
 
@@ -113,6 +141,7 @@ You can retrieve a full list of your registered sites on Onefootball by taking t
 
       $ curl -X GET \
           https://network.onefootball.com/v1/sites/ \
+          -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
    .. code-block:: python
@@ -125,7 +154,23 @@ You can retrieve a full list of your registered sites on Onefootball by taking t
 
       response = requests.get('https://network.onefootball.com/v1/sites/', headers=headers)
 
+   .. code-block:: go
+
+      req, err := http.NewRequest("GET", "https://network.onefootball.com/v1/sites/", nil)
+      if err != nil {
+       // handle err
+      }
+      req.Header.Set("Content-Type", "application/json")
+      req.Header.Set("Authorization", "Bearer TOKEN")
+
+      resp, err := http.DefaultClient.Do(req)
+      if err != nil {
+       // handle err
+      }
+      defer resp.Body.Close()
+
 |
+
 
 Publishing content
 ------------------
@@ -149,6 +194,7 @@ To do so, take the example below and do the following:
 
       $ curl -X POST \
           https://network.onefootball.com/v1/posts/ \
+          -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN' \
           -d '{
               "external_id": "ARTICLE_ID",
@@ -170,7 +216,7 @@ To do so, take the example below and do the following:
       headers = {
           'Authorization': 'Bearer TOKEN',
       }
-      
+
       data = {
           "external_id": "ARTICLE_ID",
           "site_id": SITE_ID,
@@ -183,8 +229,46 @@ To do so, take the example below and do the following:
           "image_width":  200,
           "image_height":  100
       }
-      
+
       response = requests.post('https://network.onefootball.com/v1/posts/', headers=headers, data=data)
+
+
+   .. code-block:: go
+
+      type Payload struct {
+       ExternalID  string    `json:"external_id"`
+       SiteID      int       `json:"site_id"`
+       SourceURL   string    `json:"source_url"`
+       Language    string    `json:"language"`
+       Published   time.Time `json:"published"`
+       Content     string    `json:"content"`
+       Title       string    `json:"title"`
+       ImageURL    string    `json:"image_url"`
+       ImageWidth  int       `json:"image_width"`
+       ImageHeight int       `json:"image_height"`
+      }
+
+      data := Payload{
+      // fill struct
+      }
+      payloadBytes, err := json.Marshal(data)
+      if err != nil {
+       // handle err
+      }
+      body := bytes.NewReader(payloadBytes)
+
+      req, err := http.NewRequest("POST", "https://network.onefootball.com/v1/posts/", body)
+      if err != nil {
+       // handle err
+      }
+      req.Header.Set("Content-Type", "application/json")
+      req.Header.Set("Authorization", "Bearer TOKEN")
+
+      resp, err := http.DefaultClient.Do(req)
+      if err != nil {
+       // handle err
+      }
+      defer resp.Body.Close()
 
 
 
@@ -233,6 +317,7 @@ To get the Onefootball post ID for an article so that you can reference it in up
 
       $ curl -X GET \
           https://network.onefootball.com/v1/posts/?external_id=EXTERNAL_ID \
+          -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
    .. code-block:: python
@@ -248,6 +333,21 @@ To get the Onefootball post ID for an article so that you can reference it in up
         )
 
         response = requests.get('https://network.onefootball.com/v1/posts/', headers=headers, params=params)
+
+   .. code-block:: go
+
+      req, err := http.NewRequest("GET", "https://network.onefootball.com/v1/posts/?external_id=EXTERNAL_ID", nil)
+      if err != nil {
+       // handle err
+      }
+      req.Header.Set("Content-Type", "application/json")
+      req.Header.Set("Authorization", "Bearer TOKEN")
+
+      resp, err := http.DefaultClient.Do(req)
+      if err != nil {
+       // handle err
+      }
+      defer resp.Body.Close()
 
 
 
@@ -268,6 +368,7 @@ To do so, take the example below and do the following:
 
       $ curl -X PUT \
           https://network.onefootball.com/v1/posts/POST_ID \
+          -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN' \
           -d '{
               "external_id": "ARTICLE_ID",
@@ -289,7 +390,7 @@ To do so, take the example below and do the following:
         headers = {
             'Authorization': 'Bearer TOKEN',
         }
-        
+
         data = {
             "external_id": "ARTICLE_ID",
             "site_id": SITE_ID,
@@ -302,8 +403,45 @@ To do so, take the example below and do the following:
             "image_width":  200,
             "image_height":  100
         }
-        
+
         response = requests.put('https://network.onefootball.com/v1/posts/POST_ID', headers=headers, data=data)
+
+   .. code-block:: go
+
+      type Payload struct {
+       ExternalID  string    `json:"external_id"`
+       SiteID      int       `json:"site_id"`
+       SourceURL   string    `json:"source_url"`
+       Language    string    `json:"language"`
+       Published   time.Time `json:"published"`
+       Content     string    `json:"content"`
+       Title       string    `json:"title"`
+       ImageURL    string    `json:"image_url"`
+       ImageWidth  int       `json:"image_width"`
+       ImageHeight int       `json:"image_height"`
+      }
+
+      data := Payload{
+      // fill struct
+      }
+      payloadBytes, err := json.Marshal(data)
+      if err != nil {
+       // handle err
+      }
+      body := bytes.NewReader(payloadBytes)
+
+      req, err := http.NewRequest("PUT", "https://network.onefootball.com/v1/posts/POST_ID", body)
+      if err != nil {
+       // handle err
+      }
+      req.Header.Set("Content-Type", "application/json")
+      req.Header.Set("Authorization", "Bearer TOKEN")
+
+      resp, err := http.DefaultClient.Do(req)
+      if err != nil {
+       // handle err
+      }
+      defer resp.Body.Close()
 
 
 
@@ -346,6 +484,7 @@ To do so, take the example below and do the following:
 
       $ curl -X DELETE \
           https://network.onefootball.com/v1/posts/POST_ID \
+          -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
    .. code-block:: python
@@ -358,6 +497,17 @@ To do so, take the example below and do the following:
 
         response = requests.delete('https://network.onefootball.com/v1/posts/POST_ID', headers=headers)
 
+   .. code-block:: go
 
+      req, err := http.NewRequest("DELETE", "https://network.onefootball.com/v1/posts/POST_ID", nil)
+      if err != nil {
+       // handle err
+      }
+      req.Header.Set("Content-Type", "application/json")
+      req.Header.Set("Authorization", "Bearer TOKEN")
 
-
+      resp, err := http.DefaultClient.Do(req)
+      if err != nil {
+       // handle err
+      }
+      defer resp.Body.Close()

@@ -53,7 +53,7 @@ In order to publish, update or delete content on Onefootball via the Onefootball
 
 1. Complete the registration for your Onefootball Network account.
 2. Use your login credentials to retrieve an authentication token that must be used for other requests.
-3. Retrieve the ID of the site that you want to publish content under (note that many accounts will have only one website).
+3. Retrieve the ID of the integration that you want to publish content under (note that many accounts will have only one website and therefore only one integration).
 
 
 Activating your Onefootball Network account
@@ -126,12 +126,12 @@ Refreshing an authentication token
 Each authentication token is valid for seven days after it is issued. After a token expires, repeat the process by using your login credentials to acquire a new one.
 
 
-Listing all registered sites
+Listing all registered integrations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to publish content, you must specify which of your websites the content belongs to. Many accounts on Onefootball will only have one website.
+In order to publish content, you must specify which of your integrations the content belongs to. Many accounts on Onefootball will only have one integration type.
 
-You can retrieve a full list of your registered sites on Onefootball by taking the example below and doing the following:
+You can retrieve a full list of your registered integrations on Onefootball by taking the example below and doing the following:
 
 * Replace ``TOKEN`` in the header with your valid authentication token.
 
@@ -140,7 +140,7 @@ You can retrieve a full list of your registered sites on Onefootball by taking t
    .. code-block:: shell
 
       $ curl -X GET \
-          https://network.onefootball.com/v1/sites/ \
+          https://network.onefootball.com/v1/integrations/ \
           -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
@@ -152,11 +152,11 @@ You can retrieve a full list of your registered sites on Onefootball by taking t
           'Authorization': 'Bearer TOKEN',
       }
 
-      response = requests.get('https://network.onefootball.com/v1/sites/', headers=headers)
+      response = requests.get('https://network.onefootball.com/v1/integrations/', headers=headers)
 
    .. code-block:: go
 
-      req, err := http.NewRequest("GET", "https://network.onefootball.com/v1/sites/", nil)
+      req, err := http.NewRequest("GET", "https://network.onefootball.com/v1/integrations/", nil)
       if err != nil {
        // handle err
       }
@@ -198,7 +198,7 @@ To do so, take the example below and do the following:
           -H 'Authorization: Bearer TOKEN' \
           -d '{
               "external_id": "ARTICLE_ID",
-              "site_id": SITE_ID,
+              "integration_id": INTEGRATION_ID,
               "source_url": "ARTICLE_URL",
               "language":  "en",
               "published": "2010-01-02T15:04:05Z",
@@ -219,7 +219,7 @@ To do so, take the example below and do the following:
 
       data = {
           "external_id": "ARTICLE_ID",
-          "site_id": SITE_ID,
+          "integration_id": INTEGRATION_ID,
           "source_url": "ARTICLE_URL",
           "language":  "en",
           "published": "2010-01-02T15:04:05Z",
@@ -237,7 +237,7 @@ To do so, take the example below and do the following:
 
       type Payload struct {
        ExternalID  string    `json:"external_id"`
-       SiteID      int       `json:"site_id"`
+       IntegrationID      int       `json:"integration_id"`
        SourceURL   string    `json:"source_url"`
        Language    string    `json:"language"`
        Published   time.Time `json:"published"`
@@ -277,7 +277,7 @@ To do so, take the example below and do the following:
 +=================+==========+===============================================================================================================================================================================================================================================+
 | ``external_id`` | required | The ID of the article as defined in your system. It must be unique within your own system.                                                                                                                                                    |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``site_id``     | required | The ID of a site to which the article belongs as defined by Onefootball.                                                                                                                                                                      |
+| ``integration_id`` | required | The ID of the integration to which the article belongs as defined by Onefootball.                                                                                                                                                             |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``source_url``  | required | The link to the article as published on your website. Place your homepage url if the article is not published anywhere else.                                                                                                                  |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -372,7 +372,7 @@ To do so, take the example below and do the following:
           -H 'Authorization: Bearer TOKEN' \
           -d '{
               "external_id": "ARTICLE_ID",
-              "site_id": SITE_ID,
+              "integration_id": INTEGRATION_ID,
               "source_url": "ARTICLE_URL",
               "language":  "en",
               "published": "2010-01-02T15:04:05Z",
@@ -393,7 +393,7 @@ To do so, take the example below and do the following:
 
         data = {
             "external_id": "ARTICLE_ID",
-            "site_id": SITE_ID,
+            "integration_id": INTEGRATION_ID,
             "source_url": "ARTICLE_URL",
             "language":  "en",
             "published": "2010-01-02T15:04:05Z",
@@ -410,7 +410,7 @@ To do so, take the example below and do the following:
 
       type Payload struct {
        ExternalID  string    `json:"external_id"`
-       SiteID      int       `json:"site_id"`
+       IntegrationID      int       `json:"integration_id"`
        SourceURL   string    `json:"source_url"`
        Language    string    `json:"language"`
        Published   time.Time `json:"published"`
@@ -450,7 +450,7 @@ To do so, take the example below and do the following:
 +=================+==========+===============================================================================================================================================================================================================================================+
 | ``external_id`` | required | The ID of the article as defined in your system. It must be unique within your own system.                                                                                                                                                    |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``site_id``     | required | The ID of a site to which the article belongs as defined by Onefootball.                                                                                                                                                                      |
+| ``integration_id`` | required | The ID of the integration to which the article belongs as defined by Onefootball.                                                                                                                                                             |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``source_url``  | required | The link to the article as published on your website. Place your homepage url if the article is not published anywhere else.                                                                                                                  |
 +-----------------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

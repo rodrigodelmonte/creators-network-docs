@@ -1,10 +1,9 @@
 Onefootball Network API
 =======================
 
-
-.. image:: _static/logo.png
+.. image:: _static/logo.svg
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    api

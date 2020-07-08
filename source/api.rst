@@ -23,10 +23,7 @@ Schema
 
 All API access is over HTTPS. All data is sent and received in JSON format.
 
-Access is from the following URLs:
-
-* Staging/testing: https://creators-network-api-stg.onefootball.com
-* Production: https://network.onefootball.com
+Access is from the following URL: https://network-api.onefootball.com
 
 
 Time format
@@ -82,7 +79,7 @@ You must have a valid authentication token in order to publish, modify, or delet
    .. code-block:: shell
 
       $ curl -X POST \
-          https://network.onefootball.com/v1/login \
+          https://network-api.onefootball.com/v1/login \
           -H "Content-Type: application/json" \
           -d '{"login": "EMAIL_ADDRESS", "password": "SECRET_PASSWORD"}'
 
@@ -96,7 +93,7 @@ You must have a valid authentication token in order to publish, modify, or delet
 
       data = '{"login": "EMAIL_ADDRESS", "password": "SECRET_PASSWORD"}'
 
-      response = requests.post('https://network.onefootball.com/v1/login', headers=headers, data=data)
+      response = requests.post('https://network-api.onefootball.com/v1/login', headers=headers, data=data)
 
    .. code-block:: go
 
@@ -114,7 +111,7 @@ You must have a valid authentication token in order to publish, modify, or delet
       }
       body := bytes.NewReader(payloadBytes)
 
-      req, err := http.NewRequest("POST", "https://network.onefootball.com/v1/login", body)
+      req, err := http.NewRequest("POST", "https://network-api.onefootball.com/v1/login", body)
       if err != nil {
        // handle err
       }
@@ -147,7 +144,7 @@ You can retrieve a full list of your registered integrations on OneFootball by t
    .. code-block:: shell
 
       $ curl -X GET \
-          https://network.onefootball.com/v1/integrations/ \
+          https://network-api.onefootball.com/v1/integrations/ \
           -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
@@ -159,11 +156,11 @@ You can retrieve a full list of your registered integrations on OneFootball by t
           'Authorization': 'Bearer TOKEN',
       }
 
-      response = requests.get('https://network.onefootball.com/v1/integrations/', headers=headers)
+      response = requests.get('https://network-api.onefootball.com/v1/integrations/', headers=headers)
 
    .. code-block:: go
 
-      req, err := http.NewRequest("GET", "https://network.onefootball.com/v1/integrations/", nil)
+      req, err := http.NewRequest("GET", "https://network-api.onefootball.com/v1/integrations/", nil)
       if err != nil {
        // handle err
       }
@@ -200,7 +197,7 @@ To do so, take the example below and do the following:
    .. code-block:: shell
 
       $ curl -X POST \
-          https://network.onefootball.com/v1/posts/ \
+          https://network-api.onefootball.com/v1/posts/ \
           -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN' \
           -d '{
@@ -241,7 +238,7 @@ To do so, take the example below and do the following:
           "draft": false
       }
 
-      response = requests.post('https://network.onefootball.com/v1/posts/', headers=headers, data=data)
+      response = requests.post('https://network-api.onefootball.com/v1/posts/', headers=headers, data=data)
 
 
    .. code-block:: go
@@ -270,7 +267,7 @@ To do so, take the example below and do the following:
       }
       body := bytes.NewReader(payloadBytes)
 
-      req, err := http.NewRequest("POST", "https://network.onefootball.com/v1/posts/", body)
+      req, err := http.NewRequest("POST", "https://network-api.onefootball.com/v1/posts/", body)
       if err != nil {
        // handle err
       }
@@ -332,7 +329,7 @@ To get the OneFootball post ID for an article so that you can reference it in up
    .. code-block:: shell
 
       $ curl -X GET \
-          https://network.onefootball.com/v1/posts/?external_id=EXTERNAL_ID \
+          https://network-api.onefootball.com/v1/posts/?external_id=EXTERNAL_ID \
           -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
@@ -348,11 +345,11 @@ To get the OneFootball post ID for an article so that you can reference it in up
             ('external_id', 'EXTERNAL_ID'),
         )
 
-        response = requests.get('https://network.onefootball.com/v1/posts/', headers=headers, params=params)
+        response = requests.get('https://network-api.onefootball.com/v1/posts/', headers=headers, params=params)
 
    .. code-block:: go
 
-      req, err := http.NewRequest("GET", "https://network.onefootball.com/v1/posts/?external_id=EXTERNAL_ID", nil)
+      req, err := http.NewRequest("GET", "https://network-api.onefootball.com/v1/posts/?external_id=EXTERNAL_ID", nil)
       if err != nil {
        // handle err
       }
@@ -383,7 +380,7 @@ To do so, take the example below and do the following:
    .. code-block:: shell
 
       $ curl -X PUT \
-          https://network.onefootball.com/v1/posts/POST_ID \
+          https://network-api.onefootball.com/v1/posts/POST_ID \
           -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN' \
           -d '{
@@ -424,7 +421,7 @@ To do so, take the example below and do the following:
             "draft": false
         }
 
-        response = requests.put('https://network.onefootball.com/v1/posts/POST_ID', headers=headers, data=data)
+        response = requests.put('https://network-api.onefootball.com/v1/posts/POST_ID', headers=headers, data=data)
 
    .. code-block:: go
 
@@ -452,7 +449,7 @@ To do so, take the example below and do the following:
       }
       body := bytes.NewReader(payloadBytes)
 
-      req, err := http.NewRequest("PUT", "https://network.onefootball.com/v1/posts/POST_ID", body)
+      req, err := http.NewRequest("PUT", "https://network-api.onefootball.com/v1/posts/POST_ID", body)
       if err != nil {
        // handle err
       }
@@ -506,7 +503,7 @@ To do so, take the example below and do the following:
    .. code-block:: shell
 
       $ curl -X DELETE \
-          https://network.onefootball.com/v1/posts/POST_ID \
+          https://network-api.onefootball.com/v1/posts/POST_ID \
           -H "Content-Type: application/json" \
           -H 'Authorization: Bearer TOKEN'
 
@@ -518,11 +515,11 @@ To do so, take the example below and do the following:
             'Authorization': 'Bearer TOKEN',
         }
 
-        response = requests.delete('https://network.onefootball.com/v1/posts/POST_ID', headers=headers)
+        response = requests.delete('https://network-api.onefootball.com/v1/posts/POST_ID', headers=headers)
 
    .. code-block:: go
 
-      req, err := http.NewRequest("DELETE", "https://network.onefootball.com/v1/posts/POST_ID", nil)
+      req, err := http.NewRequest("DELETE", "https://network-api.onefootball.com/v1/posts/POST_ID", nil)
       if err != nil {
        // handle err
       }

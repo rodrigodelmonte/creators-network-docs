@@ -1,0 +1,56 @@
+ul.example-selector {
+  display: flex;
+  list-style-type: none;
+  background-color: var(--system-asphalt);
+  margin: 0;
+  padding: 0;
+  border-radius: var(--of-border-radiu, 4px) var(--of-border-radiu, 4px) 0 0;
+  padding: 1em;
+  border-bottom: 4px solid var(--divider-color);
+}
+
+.example-code .example {
+  margin-top: 0;
+}
+
+ul.example-selector li {
+  display: block;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 0 5px 0 0;
+  padding: 2px 3px;
+  float: left;
+  color: var(--white);
+}
+
+ul.example-selector li.selected {
+  text-decoration: underline;
+}
+
+.example-code {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.example-code pre {
+  background-color: var(--system-asphalt);
+  color: var(--white);
+  padding-top: 2em;
+  padding-bottom: 2em;
+  border-radius: 0 0 var(--of-border-radiu, 4px) var(--of-border-radiu, 4px);
+  box-shadow: var(--of-shadow);
+}
+
+.example-code .highlight .s,
+.example-code .highlight .s1,
+.example-code .highlight .s2,
+.example-code .highlight .se {
+  color: var(--brand-green);
+}
+.example-code .highlight .nn {
+  color: var(--brand-magenta);
+}
+.example-code .highlight .mi,
+.example-code .highlight .kt {
+  color: var(--brand-blue);
+}

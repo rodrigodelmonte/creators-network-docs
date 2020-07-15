@@ -28,6 +28,7 @@ exclude_patterns = []
 
 html_theme = 'flask'
 html_favicon = '_static/favicon.svg'
+html_sidebars = { '**': ['localtoc.html'], }
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,

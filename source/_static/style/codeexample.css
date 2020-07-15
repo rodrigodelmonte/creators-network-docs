@@ -39,6 +39,8 @@ ul.example-selector li.selected {
   padding-bottom: 2em;
   border-radius: 0 0 var(--of-border-radiu, 4px) var(--of-border-radiu, 4px);
   box-shadow: var(--of-shadow);
+  max-width: 100%;
+  margin: 0;
 }
 
 .example-code .highlight .s,

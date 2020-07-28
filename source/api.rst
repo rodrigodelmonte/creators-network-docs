@@ -45,7 +45,7 @@ Examples
 Testing
 ~~~~~~~
 
-| When testing the publication and updating of articles, use the optional ``draft`` boolean. A request sent with ``draft`` being ``TRUE`` will ensure that the respective article *will not* be visible to OneFootball users. 
+| When testing the publication and updating of articles, use the optional ``draft`` boolean. A request sent with ``draft`` being ``TRUE`` will ensure that the respective article *will not* be visible to OneFootball users.
 
 | When you are ready to use your service in production and send real articles to be seen by OneFootball users, you can either leave out the ``draft`` parameter or set ``draft`` to ``FALSE``.
 
@@ -287,7 +287,7 @@ Publishing an article
 +====================+============+===============================================================================================================================================================================================================================================+
 | ``external_id``    | required   | The ID of the article as defined in your system. It must be unique (within a given language) within your own system.                                                                                                                          |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``integration_id`` | required   | The ID of the integration to which the article belongs as defined by Onefootball.                                                                                                                                                             |
+| ``integration_id`` | required   | The ID of the integration to which the article belongs as defined by OneFootball.                                                                                                                                                             |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``source_url``     | required   | The link to the article as published on your website. Place your homepage url if the article is not published anywhere else.                                                                                                                  |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -469,7 +469,7 @@ Updating an article
 +====================+============+===============================================================================================================================================================================================================================================+
 | ``external_id``    | required   | The ID of the article as defined in your system. It must be unique (within a given language) within your own system.                                                                                                                          |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``integration_id`` | required   | The ID of the integration to which the article belongs as defined by Onefootball.                                                                                                                                                             |
+| ``integration_id`` | required   | The ID of the integration to which the article belongs as defined by OneFootball.                                                                                                                                                             |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``source_url``     | required   | The link to the article as published on your website. Place your homepage url if the article is not published anywhere else.                                                                                                                  |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+

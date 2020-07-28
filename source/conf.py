@@ -1,6 +1,6 @@
-project = 'Onefootball Network API'
-copyright = '2020, Onefootball'
-author = 'Onefootball'
+project = 'OneFootball Network API'
+copyright = '2020, OneFootball'
+author = 'OneFootball'
 
 # Custom extension requires this.
 import sys, os
@@ -38,3 +38,11 @@ html_static_path = ['_static']
 source_suffix = '.rst'
 
 pygments_style = 'trac'
+
+# LOCALISATION
+#
+# for update base: sphinx-build -b gettext . _build/gettext
+# for update translations: sphinx-intl update -p _build/gettext -l en_US -l de_DE -l fr_FR -l it_IT -l pt_BR -l es_ES
+
+gettext_uuid = True
+gettext_compact = False

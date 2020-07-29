@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'Formular regular';
+  font-display: swap;
+  font-style: normal;
+  src: url('https://s3-eu-west-1.amazonaws.com/static.onefootball.com/.dodgercms/fonts/formular-regular.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Formular medium';
+  font-display: swap;
+  font-style: normal;
+  src: url('https://s3-eu-west-1.amazonaws.com/static.onefootball.com/.dodgercms/fonts/formular-medium.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'Formular bold';
+  font-display: swap;
+  font-style: normal;
+  src: url('https://s3-eu-west-1.amazonaws.com/static.onefootball.com/.dodgercms/fonts/formular-bold.woff2')
+    format('woff2');
+}

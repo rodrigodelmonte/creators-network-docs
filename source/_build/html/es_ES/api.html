@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+
+<html lang="es_ES">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneFootball Network API &#8212; documentación de OneFootball Network API - 0.1</title>
+    <link rel="stylesheet" href="_static/flasky.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/main.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/codeexample.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.svg"/>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Búsqueda" href="search.html" />
+    <link rel="prev" title="Onefootball Network API" href="index.html" />
+     
+    
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head><body>
+    
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="index.html" title="Onefootball Network API"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">documentación de OneFootball Network API - 0.1</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">OneFootball Network API</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="onefootball-network-api">
+<h1>OneFootball Network API<a class="headerlink" href="#onefootball-network-api" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introducción<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="line-block">
+<div class="line">OneFootball es la plataforma de fútbol digital líder en el mundo. La API de la OneFootball Network permite a los socios de contenido publicar artículos en la propia plataforma. También permite a los socios actualizar y eliminar artículos que Ya han publicado en la plataforma.</div>
+</div>
+<div class="line-block">
+<div class="line">Los socios pueden utilizar la API para configurar sus propios servicios de modo que el contenido publicado en sus sitios se envíe automáticamente a OneFootball y se integre de forma nativa en la plataforma OneFootball para los usuarios de OneFootball.</div>
+</div>
+<div class="line-block">
+<div class="line">Por favor tenga en cuenta que la OneFootball Network es una plataforma cerrada, solo para invitados, y solo los socios de contenido autorizados pueden usar la API de la red OneFootball.</div>
+</div>
+</div>
+<div class="section" id="conventions">
+<h2>Convenciones<a class="headerlink" href="#conventions" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="line-block">
+<div class="line">Antes de empezar, tenga en cuenta las convenciones aquí enumeradas, las cuales se aplican en toda la API.</div>
+</div>
+<div class="section" id="schema">
+<h3>Esquema<a class="headerlink" href="#schema" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Todo el acceso a la API se realiza a través de HTTPS. Todos los datos se envían y reciben en formato JSON.</div>
+</div>
+<div class="line-block">
+<div class="line">El acceso es desde la siguiente URL: <a class="reference external" href="https://network-api.onefootball.com">https://network-api.onefootball.com</a></div>
+</div>
+</div>
+<div class="section" id="time-format">
+<h3>Formato de tiempo<a class="headerlink" href="#time-format" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Todas las marcas de tiempo están en formato ISO 8601 <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DDTHH:MM:SSZ</span></code>.</div>
+</div>
+</div>
+<div class="section" id="authentication">
+<h3>Autentificación<a class="headerlink" href="#authentication" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Las solicitudes que requieren autenticación deben proporcionar un encabezado <code class="docutils literal notranslate"><span class="pre">Authorization</span></code>. El valor debe ser un token <code class="docutils literal notranslate"><span class="pre">Bearer</span></code> adquirido durante el proceso de inicio de sesión.</div>
+</div>
+</div>
+<div class="section" id="examples">
+<h3>Ejemplos<a class="headerlink" href="#examples" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">En la documentación, hemos tratado de dar ejemplos de fragmentos de código que se pueden copiar, pegar y ajustar en lugar de describir todo en palabras. Por favor, mire los ejemplos como referencia.</div>
+</div>
+</div>
+<div class="section" id="testing">
+<h3>Prueba<a class="headerlink" href="#testing" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Al probar la publicación y actualización de artículos, utilice el <code class="docutils literal notranslate"><span class="pre">draft</span></code> booleano opcional. Una solicitud enviada con <code class="docutils literal notranslate"><span class="pre">draft</span></code> como <code class="docutils literal notranslate"><span class="pre">TRUE</span></code> garantizará que el artículo respectivo no sea visible para los usuarios de OneFootball.</div>
+</div>
+<div class="line-block">
+<div class="line">Cuando esté listo para usar su servicio en producción y enviar artículos reales para que los vean los usuarios de OneFootball, puede omitir el parámetro <code class="docutils literal notranslate"><span class="pre">draft</span></code> o establecer <code class="docutils literal notranslate"><span class="pre">draft</span></code> como <code class="docutils literal notranslate"><span class="pre">FALSE</span></code>.</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-set-up">
+<h2>Cómo configurar<a class="headerlink" href="#getting-set-up" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="line-block">
+<div class="line">Para publicar, actualizar o eliminar contenido en OneFootball a través de la API de la red OneFootball, primero debe hacer lo siguiente:</div>
+</div>
+<ol class="arabic simple">
+<li><p>Complete el registro para su cuenta en la OneFootball Network.</p></li>
+<li><p>Use sus credenciales de inicio de sesión para obtener un token de autentificación que debe usarse para otras solicitudes.</p></li>
+<li><p>Obtenga la ID de la integración en la que desea publicar contenido (tenga en consideración que muchas cuentas tendrán un solo sitio web y, por lo tanto, solo una integración).</p></li>
+</ol>
+<div class="section" id="activating-your-onefootball-network-account">
+<h3>Activación de su cuenta en la OneFootball Network<a class="headerlink" href="#activating-your-onefootball-network-account" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">La OneFootball Network en una plataforma solo por invitación. Si está invitado a unirse y ha aceptado unirse, recibirá un correo electrónico de registro. Siga las instrucciones en el correo electrónico de registro, configure su contraseña y luego inicie sesión en el portal de la OneFootball Network. Asegúrese de completar el proceso de incorporación en el portal antes de intentar publicar contenido a través de la API de la OneFootball Network.</div>
+</div>
+</div>
+<div class="section" id="retrieving-an-authentication-token">
+<h3>Obtener el token de autentificación<a class="headerlink" href="#retrieving-an-authentication-token" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Una vez que haya iniciado sesión con éxito en el portal de la OneFootball Network, puede usar la misma dirección de correo electrónico y contraseña para obtener un token de autenticación para la API de la red OneFootball.</div>
+</div>
+<div class="line-block">
+<div class="line">Debe tener un token de autenticación válido para publicar, modificar o eliminar contenido a través de solicitudes realizadas a la API de la OneFootball Network. Para adquirir un token, envíe sus credenciales de inicio de sesión según el siguiente ejemplo:</div>
+</div>
+<div class="example-code docutils container">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ curl -X POST <span class="se">\</span>
+    https://network-api.onefootball.com/v1/login <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -d <span class="s1">&#39;{&quot;login&quot;: &quot;EMAIL_ADDRESS&quot;, &quot;password&quot;: &quot;SECRET_PASSWORD&quot;}&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Content-Type&#39;</span><span class="p">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="s1">&#39;{&quot;login&quot;: &quot;EMAIL_ADDRESS&quot;, &quot;password&quot;: &quot;SECRET_PASSWORD&quot;}&#39;</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://network-api.onefootball.com/v1/login&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Payload</span> <span class="kd">struct</span> <span class="p">{</span>
+ <span class="nx">Login</span>    <span class="kt">string</span> <span class="s">`json:&quot;login&quot;`</span>
+ <span class="nx">Password</span> <span class="kt">string</span> <span class="s">`json:&quot;password&quot;`</span>
+<span class="p">}</span>
+
+<span class="nx">data</span> <span class="o">:=</span> <span class="nx">Payload</span><span class="p">{</span>
+<span class="c1">// fill struct</span>
+<span class="p">}</span>
+<span class="nx">payloadBytes</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">body</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">payloadBytes</span><span class="p">)</span>
+
+<span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;https://network-api.onefootball.com/v1/login&quot;</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+
+<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="refreshing-an-authentication-token">
+<h3>Actualizar un token de autentificación<a class="headerlink" href="#refreshing-an-authentication-token" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Cada token de autenticación es válido durante siete días después de su emisión. Después de que caduque un token, repita el proceso utilizando sus credenciales de inicio de sesión para adquirir uno nuevo.</div>
+</div>
+</div>
+<div class="section" id="listing-all-registered-integrations">
+<h3>Listado de todas las integraciones registradas<a class="headerlink" href="#listing-all-registered-integrations" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Para publicar contenido, debe especificar a qué integraciones pertenece el contenido. En la mayoría de los casos, su cuenta solo tendrá una integración con OneFootball. Sin embargo, las cuentas con múltiples sitios web diferentes que publican contenido en OneFootball pueden tener múltiples integraciones y, por lo tanto, hay que seleccionar la integración correcta para el sitio web correcto.</div>
+</div>
+<div class="line-block">
+<div class="line">Puede obtener una lista completa de sus integraciones registradas en OneFootball tomando el siguiente ejemplo y haciendo lo siguiente:</div>
+</div>
+<ul class="simple">
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code> en el encabezado con su token de autentificación válido</p></li>
+</ul>
+<div class="example-code docutils container">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ curl -X GET <span class="se">\</span>
+    https://network-api.onefootball.com/v1/integrations/ <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s1">&#39;Authorization: Bearer TOKEN&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer TOKEN&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://network-api.onefootball.com/v1/integrations/&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;https://network-api.onefootball.com/v1/integrations/&quot;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer TOKEN&quot;</span><span class="p">)</span>
+
+<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="publishing-content">
+<h2>Publicar contenido<a class="headerlink" href="#publishing-content" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="line-block">
+<div class="line">Una vez que haya completado la configuración y tenga un token de autentificación, puede publicar un artículo en OneFootball.</div>
+</div>
+<div class="section" id="publishing-an-article">
+<h3>Publicar un artículo<a class="headerlink" href="#publishing-an-article" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Con un token de autenticación válido, puede publicar un artículo enviando una solicitud <code class="docutils literal notranslate"><span class="pre">POST</span></code> al punto final de la entidad de la publicación.</div>
+</div>
+<div class="line-block">
+<div class="line">Para hacerlo, use el siguiente ejemplo y haga lo siguiente</div>
+</div>
+<ul class="simple">
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code> en el encabezado con su token de autentificación válido</p></li>
+<li><p>Establezca todos los atributos del artículo como se muestra en el siguiente ejemplo.</p></li>
+</ul>
+<div class="example-code docutils container">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ curl -X POST <span class="se">\</span>
+    https://network-api.onefootball.com/v1/posts/ <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s1">&#39;Authorization: Bearer TOKEN&#39;</span> <span class="se">\</span>
+    -d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;external_id&quot;: &quot;ARTICLE_ID&quot;,</span>
+<span class="s1">        &quot;integration_id&quot;: INTEGRATION_ID,</span>
+<span class="s1">        &quot;source_url&quot;: &quot;ARTICLE_URL&quot;,</span>
+<span class="s1">        &quot;language&quot;: &quot;en&quot;,</span>
+<span class="s1">        &quot;published&quot;: &quot;2010-01-02T15:04:05Z&quot;,</span>
+<span class="s1">        &quot;modified&quot;: &quot;2010-01-02T15:04:05Z&quot;,</span>
+<span class="s1">        &quot;content&quot;: &quot;Article content&quot;,</span>
+<span class="s1">        &quot;title&quot;: &quot;Article title&quot;,</span>
+<span class="s1">        &quot;image_url&quot;: &quot;https://your-blog.com/images/1.png&quot;,</span>
+<span class="s1">        &quot;image_width&quot;: 200,</span>
+<span class="s1">        &quot;image_height&quot;: 100,</span>
+<span class="s1">        &quot;draft&quot;: false</span>
+<span class="s1">    }&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer TOKEN&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;external_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ARTICLE_ID&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;integration_id&quot;</span><span class="p">:</span> <span class="n">INTEGRATION_ID</span><span class="p">,</span>
+    <span class="s2">&quot;source_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ARTICLE_URL&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;published&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-02T15:04:05Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-02T15:04:05Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;Article content&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span> <span class="s2">&quot;Article title&quot;</span>
+    <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://your-blog.com/images/1.png&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;image_width&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;image_height&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;draft&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://network-api.onefootball.com/v1/posts/&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Payload</span> <span class="kd">struct</span> <span class="p">{</span>
+ <span class="nx">ExternalID</span>         <span class="kt">string</span>    <span class="s">`json:&quot;external_id&quot;`</span>
+ <span class="nx">IntegrationID</span>      <span class="kt">int</span>       <span class="s">`json:&quot;integration_id&quot;`</span>
+ <span class="nx">SourceURL</span>          <span class="kt">string</span>    <span class="s">`json:&quot;source_url&quot;`</span>
+ <span class="nx">Language</span>           <span class="kt">string</span>    <span class="s">`json:&quot;language&quot;`</span>
+ <span class="nx">Published</span>          <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`json:&quot;published&quot;`</span>
+ <span class="nx">Modified</span>           <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`json:&quot;modified&quot;`</span>
+ <span class="nx">Content</span>            <span class="kt">string</span>    <span class="s">`json:&quot;content&quot;`</span>
+ <span class="nx">Title</span>              <span class="kt">string</span>    <span class="s">`json:&quot;title&quot;`</span>
+ <span class="nx">ImageURL</span>           <span class="kt">string</span>    <span class="s">`json:&quot;image_url&quot;`</span>
+ <span class="nx">ImageWidth</span>         <span class="kt">int</span>       <span class="s">`json:&quot;image_width&quot;`</span>
+ <span class="nx">ImageHeight</span>        <span class="kt">int</span>       <span class="s">`json:&quot;image_height&quot;`</span>
+ <span class="nx">Draft</span>              <span class="kt">bool</span>      <span class="s">`json:&quot;draft&quot;`</span>
+<span class="p">}</span>
+
+<span class="nx">data</span> <span class="o">:=</span> <span class="nx">Payload</span><span class="p">{</span>
+<span class="c1">// fill struct</span>
+<span class="p">}</span>
+<span class="nx">payloadBytes</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">body</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">payloadBytes</span><span class="p">)</span>
+
+<span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;POST&quot;</span><span class="p">,</span> <span class="s">&quot;https://network-api.onefootball.com/v1/posts/&quot;</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer TOKEN&quot;</span><span class="p">)</span>
+
+<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Campo</p></th>
+<th class="head"><p>Uso</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">external_id</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El ID del artículo como se define en su sistema. Debe ser único (dentro de un idioma determinado) dentro de su propio sistema.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">integration_id</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>The ID of the integration to which the article belongs as defined by OneFootball.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source_url</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El enlace al artículo publicado en su sitio web. Coloque la URL de su página de inicio si el artículo no se publica en ningún otro lugar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El lenguaje del artículo. Las opciones válidas son <code class="docutils literal notranslate"><span class="pre">en</span></code>, <code class="docutils literal notranslate"><span class="pre">de</span></code>, <code class="docutils literal notranslate"><span class="pre">es</span></code>, <code class="docutils literal notranslate"><span class="pre">fr</span></code>, <code class="docutils literal notranslate"><span class="pre">br</span></code>, e <code class="docutils literal notranslate"><span class="pre">it</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">published</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>La hora en que se publicó el artículo. En caso de duda, utilice la hora actual.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">modified</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>La hora en que se actualizó el artículo por última vez. En caso de duda, utilice la hora actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">content</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El contenido del artículo, que debe estar en formato correcto HTML. Por favor vea <a href="#id2"><span class="problematic" id="id3">`este enlace&lt;https://static.onefootball.com/onefootball-network/technical-documentation/html-guidelines&gt;`_</span></a> para detalles importantes sobre contenido HTML aceptable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El título del artículo. El título no puede ser una fila vacía.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image_url</span></code></p></td>
+<td><p>opcional</p></td>
+<td><p>Un campo opcional para la URL de la imagen destacada del artículo. Si se utiliza, se debe proporcionar image_width e image_height de la misma manera (el ancho y el alto de la imagen en píxeles).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">draft</span></code></p></td>
+<td><p>opcional</p></td>
+<td><p>Un booleano opcional para ser utilizado con fines de prueba. Si se establece como true, el artículo no será visible para los usuarios de OneFootball. Si no se proporciona, el artículo estará disponible de forma predeterminada para los usuarios de OneFootball.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="updating-and-deleting-content">
+<h2>Actualizar y eliminar contenido<a class="headerlink" href="#updating-and-deleting-content" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="line-block">
+<div class="line">Una vez que su contenido esté en OneFootball, puede administrarlo actualizándolo y eliminándolo.</div>
+</div>
+<div class="line-block">
+<div class="line">Para actualizar o eliminar un artículo en OneFootball, primero deberá obtener la ID de publicación de OneFootball para ese artículo.</div>
+</div>
+<div class="section" id="obtaining-an-article-s-post-id">
+<h3>Cómo obtener la ID de publicación de un artículo<a class="headerlink" href="#obtaining-an-article-s-post-id" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Para obtener el ID de publicación de OneFootball para un artículo a fin de poder consultarlo en las operaciones de actualización o eliminación, siga el ejemplo que está abajo y haga lo siguiente:</div>
+</div>
+<ul class="simple">
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">EXTERNAL_ID</span></code> en la URL con la id del artículo en su sistema, la cual usted proporcionó al publicar el artículo. Esto debe ser codificado de ser necesario.</p></li>
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code> en el encabezado con su token de autentificación válido</p></li>
+</ul>
+<div class="example-code docutils container">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ curl -X GET <span class="se">\</span>
+    https://network-api.onefootball.com/v1/posts/?external_id<span class="o">=</span>EXTERNAL_ID <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s1">&#39;Authorization: Bearer TOKEN&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer TOKEN&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s1">&#39;external_id&#39;</span><span class="p">,</span> <span class="s1">&#39;EXTERNAL_ID&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://network-api.onefootball.com/v1/posts/&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;GET&quot;</span><span class="p">,</span> <span class="s">&quot;https://network-api.onefootball.com/v1/posts/?external_id=EXTERNAL_ID&quot;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer TOKEN&quot;</span><span class="p">)</span>
+
+<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="updating-an-article">
+<h3>Actualizar un artículo<a class="headerlink" href="#updating-an-article" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">Ocasionalmente, puede editar un artículo de su sitio. Para asegurarse de que este artículo se actualice en OneFootball, use el método <code class="docutils literal notranslate"><span class="pre">PUT</span></code> del punto final de la entidad de la publicación.</div>
+</div>
+<div class="line-block">
+<div class="line">Para hacerlo, use el siguiente ejemplo y haga lo siguiente</div>
+</div>
+<ul class="simple">
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">POST_ID</span></code> en la URL con el ID de publicación de OneFootball del artículo que desea actualizar (consulte más arriba cómo obtenerla).</p></li>
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code> en el encabezado con su token de autentificación válido</p></li>
+<li><p>Establezca todos los atributos del artículo como se muestra en el siguiente ejemplo. Tenga en cuenta que todos los atributos sobrescribirán los valores existentes.</p></li>
+</ul>
+<div class="example-code docutils container">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ curl -X PUT <span class="se">\</span>
+    https://network-api.onefootball.com/v1/posts/POST_ID <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s1">&#39;Authorization: Bearer TOKEN&#39;</span> <span class="se">\</span>
+    -d <span class="s1">&#39;{</span>
+<span class="s1">        &quot;external_id&quot;: &quot;ARTICLE_ID&quot;,</span>
+<span class="s1">        &quot;integration_id&quot;: INTEGRATION_ID,</span>
+<span class="s1">        &quot;source_url&quot;: &quot;ARTICLE_URL&quot;,</span>
+<span class="s1">        &quot;language&quot;:  &quot;en&quot;,</span>
+<span class="s1">        &quot;published&quot;: &quot;2010-01-02T15:04:05Z&quot;,</span>
+<span class="s1">        &quot;modified&quot;: &quot;2010-01-02T15:04:05Z&quot;,</span>
+<span class="s1">        &quot;content&quot;:  &quot;Article content&quot;,</span>
+<span class="s1">        &quot;title&quot;:  &quot;Article title&quot;,</span>
+<span class="s1">        &quot;image_url&quot;:  &quot;https://your-blog.com/images/1.png&quot;,</span>
+<span class="s1">        &quot;image_width&quot;:  200,</span>
+<span class="s1">        &quot;image_height&quot;:  100,</span>
+<span class="s1">        &quot;draft&quot;: false</span>
+<span class="s1">    }&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer TOKEN&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;external_id&quot;</span><span class="p">:</span> <span class="s2">&quot;ARTICLE_ID&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;integration_id&quot;</span><span class="p">:</span> <span class="n">INTEGRATION_ID</span><span class="p">,</span>
+    <span class="s2">&quot;source_url&quot;</span><span class="p">:</span> <span class="s2">&quot;ARTICLE_URL&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;language&quot;</span><span class="p">:</span>  <span class="s2">&quot;en&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;published&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-02T15:04:05Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modified&quot;</span><span class="p">:</span> <span class="s2">&quot;2010-01-02T15:04:05Z&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content&quot;</span><span class="p">:</span>  <span class="s2">&quot;Article content&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;title&quot;</span><span class="p">:</span>  <span class="s2">&quot;Article title&quot;</span>
+    <span class="s2">&quot;image_url&quot;</span><span class="p">:</span>  <span class="s2">&quot;https://your-blog.com/images/1.png&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;image_width&quot;</span><span class="p">:</span>  <span class="mi">200</span><span class="p">,</span>
+    <span class="s2">&quot;image_height&quot;</span><span class="p">:</span>  <span class="mi">100</span><span class="p">,</span>
+    <span class="s2">&quot;draft&quot;</span><span class="p">:</span> <span class="n">false</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s1">&#39;https://network-api.onefootball.com/v1/posts/POST_ID&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kd">type</span> <span class="nx">Payload</span> <span class="kd">struct</span> <span class="p">{</span>
+ <span class="nx">ExternalID</span>         <span class="kt">string</span>    <span class="s">`json:&quot;external_id&quot;`</span>
+ <span class="nx">IntegrationID</span>      <span class="kt">int</span>       <span class="s">`json:&quot;integration_id&quot;`</span>
+ <span class="nx">SourceURL</span>          <span class="kt">string</span>    <span class="s">`json:&quot;source_url&quot;`</span>
+ <span class="nx">Language</span>           <span class="kt">string</span>    <span class="s">`json:&quot;language&quot;`</span>
+ <span class="nx">Published</span>          <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`json:&quot;published&quot;`</span>
+ <span class="nx">Modified</span>           <span class="nx">time</span><span class="p">.</span><span class="nx">Time</span> <span class="s">`json:&quot;modified&quot;`</span>
+ <span class="nx">Content</span>            <span class="kt">string</span>    <span class="s">`json:&quot;content&quot;`</span>
+ <span class="nx">Title</span>              <span class="kt">string</span>    <span class="s">`json:&quot;title&quot;`</span>
+ <span class="nx">ImageURL</span>           <span class="kt">string</span>    <span class="s">`json:&quot;image_url&quot;`</span>
+ <span class="nx">ImageWidth</span>         <span class="kt">int</span>       <span class="s">`json:&quot;image_width&quot;`</span>
+ <span class="nx">ImageHeight</span>        <span class="kt">int</span>       <span class="s">`json:&quot;image_height&quot;`</span>
+ <span class="nx">Draft</span>              <span class="kt">bool</span>      <span class="s">`json:&quot;draft&quot;`</span>
+<span class="p">}</span>
+
+<span class="nx">data</span> <span class="o">:=</span> <span class="nx">Payload</span><span class="p">{</span>
+<span class="c1">// fill struct</span>
+<span class="p">}</span>
+<span class="nx">payloadBytes</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">body</span> <span class="o">:=</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">NewReader</span><span class="p">(</span><span class="nx">payloadBytes</span><span class="p">)</span>
+
+<span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;PUT&quot;</span><span class="p">,</span> <span class="s">&quot;https://network-api.onefootball.com/v1/posts/POST_ID&quot;</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer TOKEN&quot;</span><span class="p">)</span>
+
+<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 4%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Campo</p></th>
+<th class="head"><p>Uso</p></th>
+<th class="head"><p>Descripción</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">external_id</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El ID del artículo como se define en su sistema. Debe ser único (dentro de un idioma determinado) dentro de su propio sistema.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">integration_id</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>The ID of the integration to which the article belongs as defined by OneFootball.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">source_url</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El enlace al artículo publicado en su sitio web. Coloque la URL de su página de inicio si el artículo no se publica en ningún otro lugar.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">language</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El lenguaje del artículo. Las opciones válidas son <code class="docutils literal notranslate"><span class="pre">en</span></code>, <code class="docutils literal notranslate"><span class="pre">de</span></code>, <code class="docutils literal notranslate"><span class="pre">es</span></code>, <code class="docutils literal notranslate"><span class="pre">fr</span></code>, <code class="docutils literal notranslate"><span class="pre">br</span></code>, e <code class="docutils literal notranslate"><span class="pre">it</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">published</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>La hora en que se publicó el artículo. En caso de duda, utilice la hora actual.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">modified</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>La hora en que se actualizó el artículo por última vez. En caso de duda, utilice la hora actual.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">content</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El contenido del artículo, que debe estar en formato correcto HTML. Por favor vea <a href="#id4"><span class="problematic" id="id5">`este enlace&lt;https://static.onefootball.com/onefootball-network/technical-documentation/html-guidelines&gt;`_</span></a> para detalles importantes sobre contenido HTML aceptable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p>obligatorio</p></td>
+<td><p>El título del artículo. El título no puede ser una fila vacía.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">image_url</span></code></p></td>
+<td><p>opcional</p></td>
+<td><p>Un campo opcional para la URL de la imagen destacada del artículo. Si se utiliza, se debe proporcionar image_width e image_height de la misma manera (el ancho y el alto de la imagen en píxeles).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">draft</span></code></p></td>
+<td><p>opcional</p></td>
+<td><p>Un booleano opcional para ser utilizado con fines de prueba. Si se establece como true, el artículo no será visible para los usuarios de OneFootball. Si no se proporciona, el artículo estará disponible de forma predeterminada para los usuarios de OneFootball.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="deleting-an-article">
+<h3>Borrar un artículo<a class="headerlink" href="#deleting-an-article" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="line-block">
+<div class="line">También puede eliminar artículos de OneFootball utilizando el método <code class="docutils literal notranslate"><span class="pre">DELETE</span></code> del punto final de la publicación.</div>
+</div>
+<div class="line-block">
+<div class="line">Para hacerlo, use el siguiente ejemplo y haga lo siguiente</div>
+</div>
+<ul class="simple">
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">POST_ID</span></code> en la URL con el ID de publicación de OneFootball del artículo que desea eliminar (consulte más arriba cómo obtenerla).</p></li>
+<li><p>Reemplace <code class="docutils literal notranslate"><span class="pre">TOKEN</span></code> en el encabezado con su token de autentificación válido</p></li>
+</ul>
+<div class="example-code docutils container">
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ curl -X DELETE <span class="se">\</span>
+    https://network-api.onefootball.com/v1/posts/POST_ID <span class="se">\</span>
+    -H <span class="s2">&quot;Content-Type: application/json&quot;</span> <span class="se">\</span>
+    -H <span class="s1">&#39;Authorization: Bearer TOKEN&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="s1">&#39;Bearer TOKEN&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;https://network-api.onefootball.com/v1/posts/POST_ID&#39;</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="nx">req</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">NewRequest</span><span class="p">(</span><span class="s">&quot;DELETE&quot;</span><span class="p">,</span> <span class="s">&quot;https://network-api.onefootball.com/v1/posts/POST_ID&quot;</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Authorization&quot;</span><span class="p">,</span> <span class="s">&quot;Bearer TOKEN&quot;</span><span class="p">)</span>
+
+<span class="nx">resp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">DefaultClient</span><span class="p">.</span><span class="nx">Do</span><span class="p">(</span><span class="nx">req</span><span class="p">)</span>
+<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+ <span class="c1">// handle err</span>
+<span class="p">}</span>
+<span class="k">defer</span> <span class="nx">resp</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Tabla de contenido</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">OneFootball Network API</a><ul>
+<li><a class="reference internal" href="#introduction">Introducción</a></li>
+<li><a class="reference internal" href="#conventions">Convenciones</a><ul>
+<li><a class="reference internal" href="#schema">Esquema</a></li>
+<li><a class="reference internal" href="#time-format">Formato de tiempo</a></li>
+<li><a class="reference internal" href="#authentication">Autentificación</a></li>
+<li><a class="reference internal" href="#examples">Ejemplos</a></li>
+<li><a class="reference internal" href="#testing">Prueba</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#getting-set-up">Cómo configurar</a><ul>
+<li><a class="reference internal" href="#activating-your-onefootball-network-account">Activación de su cuenta en la OneFootball Network</a></li>
+<li><a class="reference internal" href="#retrieving-an-authentication-token">Obtener el token de autentificación</a></li>
+<li><a class="reference internal" href="#refreshing-an-authentication-token">Actualizar un token de autentificación</a></li>
+<li><a class="reference internal" href="#listing-all-registered-integrations">Listado de todas las integraciones registradas</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#publishing-content">Publicar contenido</a><ul>
+<li><a class="reference internal" href="#publishing-an-article">Publicar un artículo</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#updating-and-deleting-content">Actualizar y eliminar contenido</a><ul>
+<li><a class="reference internal" href="#obtaining-an-article-s-post-id">Cómo obtener la ID de publicación de un artículo</a></li>
+<li><a class="reference internal" href="#updating-an-article">Actualizar un artículo</a></li>
+<li><a class="reference internal" href="#deleting-an-article">Borrar un artículo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+
+    
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2020, OneFootball.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.1.1.
+    </div>
+    
+
+  </body>
+</html>

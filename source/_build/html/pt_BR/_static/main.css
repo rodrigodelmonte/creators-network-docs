@@ -1,0 +1,44 @@
+@import url('style/reset.css');
+@import url('style/variables.css');
+@import url('style/colors.css');
+@import url('style/fonts.css');
+@import url('style/typography.css');
+@import url('style/codeexample.css');
+
+code.docutils.literal.notranslate {
+  background-color: var(--brand-green);
+}
+
+div.document {
+  width: var(--max-document-width, 960px);
+  max-width: 100%;
+}
+
+div.body {
+  max-width: 100%;
+}
+
+/* hide navigation after 2nd level */
+div.sphinxsidebar ul > li > ul > li > ul {
+  display: none;
+}
+
+/* hide navigation after 1st level dot */
+.sphinxsidebarwrapper > ul > li:before {
+  display: none;
+}
+
+.sphinxsidebarwrapper > ul {
+  padding-left: 0;
+}
+
+div.sphinxsidebar ul ul,
+div.sphinxsidebar ul.want-points {
+  margin-left: 30px;
+  list-style: none;
+}
+
+/* hide list dots inside navigation*/
+.sphinxsidebarwrapper ul li:before {
+  display: none;
+}

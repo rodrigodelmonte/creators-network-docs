@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: OneFootball Network API\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-07-28 15:23+0200\n"
-"PO-Revision-Date: 2020-07-28 16:46+0200\n"
+"PO-Revision-Date: 2020-07-28 17:40+0200\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -167,7 +167,7 @@ msgid ""
 msgstr ""
 "Wenn Ihr Content auf OneFootball über die OneFootball Network API "
 "veröffentlichen, updaten oder löschen möchtet, müsst Ihr zunächst "
-"Folgendes unternehmen: "
+"Folgendes unternehmen:"
 
 #: ../../api.rst:59 c5613523b2e5466e954631aa09da334b
 msgid "Complete the registration for your OneFootball Network account."
@@ -384,7 +384,7 @@ msgstr ""
 #: ../../api.rst:292 ../../api.rst:474 06c8d62ade8444dab2c1f52e7a51e532
 #: a35d54b7595a444b88244933ad5259d7
 msgid "``source_url``"
-msgstr "source_url"
+msgstr "``source_url``"
 
 #: ../../api.rst:292 ../../api.rst:474 f027c021bc704b839707499e3cae083e
 #: f980f1888cdd4fbe94d520d226f14113

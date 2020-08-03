@@ -92,9 +92,13 @@ Retrieving an authentication token
           'Content-Type': 'application/json',
       }
 
-      data = '{"login": "EMAIL_ADDRESS", "password": "SECRET_PASSWORD"}'
+      data = {"login": "EMAIL_ADDRESS", "password": "SECRET_PASSWORD"}
 
-      response = requests.post('https://network-api.onefootball.com/v1/login', headers=headers, data=data)
+      response = requests.post(
+          'https://network-api.onefootball.com/v1/login',
+          headers=headers,
+          data=data
+      )
 
    .. code-block:: go
 
@@ -157,7 +161,10 @@ Listing all registered integrations
           'Authorization': 'Bearer TOKEN',
       }
 
-      response = requests.get('https://network-api.onefootball.com/v1/integrations/', headers=headers)
+      response = requests.get(
+          'https://network-api.onefootball.com/v1/integrations/',
+          headers=headers
+      )
 
    .. code-block:: go
 
@@ -239,7 +246,11 @@ Publishing an article
           "draft": false
       }
 
-      response = requests.post('https://network-api.onefootball.com/v1/posts/', headers=headers, data=data)
+      response = requests.post(
+        'https://network-api.onefootball.com/v1/posts/',
+        headers=headers,
+        data=data
+      )
 
 
    .. code-block:: go
@@ -342,11 +353,15 @@ Obtaining an article's post ID
             'Authorization': 'Bearer TOKEN',
         }
 
-        params = (
-            ('external_id', 'EXTERNAL_ID'),
-        )
+        params = {
+            'external_id': 'EXTERNAL_ID',
+        }
 
-        response = requests.get('https://network-api.onefootball.com/v1/posts/', headers=headers, params=params)
+        response = requests.get(
+            'https://network-api.onefootball.com/v1/posts/',
+            headers=headers,
+            params=params
+        )
 
    .. code-block:: go
 
@@ -422,7 +437,11 @@ Updating an article
             "draft": false
         }
 
-        response = requests.put('https://network-api.onefootball.com/v1/posts/POST_ID', headers=headers, data=data)
+        response = requests.put(
+            'https://network-api.onefootball.com/v1/posts/POST_ID',
+            headers=headers,
+            data=data
+        )
 
    .. code-block:: go
 
@@ -516,7 +535,10 @@ Deleting an article
             'Authorization': 'Bearer TOKEN',
         }
 
-        response = requests.delete('https://network-api.onefootball.com/v1/posts/POST_ID', headers=headers)
+        response = requests.delete(
+            'https://network-api.onefootball.com/v1/posts/POST_ID',
+            headers=headers
+        )
 
    .. code-block:: go
 

@@ -37,8 +37,8 @@ msgid ""
 msgstr ""
 "OneFootball est la plus grande plateforme digitale au monde entièrement "
 "consacrée au football. L’API du OneFootball Network permet aux partenaires "
-"de OneFootball de publier des articles sur la plateforme. Il leur permet "
-"également de mettre à jour et de supprimer des articles qu’ils ont déjà "
+"de OneFootball de publier des articles sur cette plateforme. Elle leur permet "
+"également de mettre à jour et de supprimer des articles qu’ils auraient déjà "
 "publiés."
 
 #: ../../api.rst:10 0ed2b013298c4725bab4c28dcdb4835f
@@ -71,8 +71,8 @@ msgid ""
 "Before you get started, please note the conventions listed here, which "
 "apply throughout the API."
 msgstr ""
-"Avant de débuter, veuillez noter les normes d’utilisation listées ci-"
-"dessous et valables à travers l’API."
+"Avant de débuter, prenez connaissance des conventions suivantes car"
+"elles sont valables pour toute l'API."
 
 #: ../../api.rst:23 1617ca2a01d549c7921da521f2ae71fa
 msgid "Schema"
@@ -88,7 +88,7 @@ msgstr ""
 #: ../../api.rst:27 e07537e279e44beaae7d1a005b6b1366
 msgid "Access is from the following URL: https://network-api.onefootball.com"
 msgstr ""
-"L’accès se fait via les URL suivants : https://network-api.onefootball.com"
+"L’accès se fait via les URL suivantes : https://network-api.onefootball.com"
 
 #: ../../api.rst:31 7e0f0ac2ef634e6eaaebe63161e7675e
 msgid "Time format"
@@ -316,7 +316,9 @@ msgstr "Pour ce faire, veuillez vous référer à l’exemple ci-dessous :"
 
 #: ../../api.rst:194 005aed43de0d447d84d84a22f988fe36
 msgid "Set all article attributes as shown in the example below."
-msgstr "Remplacez ``TOKEN`` dans l’en-tête par votre token d’authen’ valide."
+msgstr ""
+"Remplacez tous les attributs de l'article comme dans"
+"l'exemple ci-dessous."
 
 #: ../../api.rst:286 ../../api.rst:468 71141827956d413bb75fea4c0fefad78
 #: f3bd061eec8746dbac48dcb70b50b6c3
@@ -458,7 +460,7 @@ msgstr ""
 #: ../../api.rst:302 ../../api.rst:484 09c1d2b8ee1b4c04a468646041e0b85b
 #: 479df64e63ca42e99a6a86c94a463e36
 msgid "The title of the article. The title cannot be an empty string."
-msgstr "Le titre de l’article. La case titre ne peut pas être laissée vide. "
+msgstr "Le titre de l’article. Le champ titre ne peut pas être laissé vide. "
 
 #: ../../api.rst:304 ../../api.rst:486 be458ff33bf144589c7df986e081bfe1
 #: dd3af9db64434d4faa846e66a7727fc8

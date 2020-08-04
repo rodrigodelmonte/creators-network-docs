@@ -58,7 +58,6 @@ Getting set up
 
 1. Complete the registration for your OneFootball Network account.
 2. Use your login credentials to retrieve an authentication token that must be used for other requests.
-3. Retrieve the ID of the integration that you want to publish content under (note that many accounts will have only one website and therefore only one integration).
 
 
 Activating your OneFootball Network account
@@ -135,55 +134,6 @@ Refreshing an authentication token
 | Each authentication token is valid for seven days after it is issued. After a token expires, repeat the process by using your login credentials to acquire a new one.
 
 
-Listing all registered integrations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-| In order to publish content, you must specify which of your integrations the content belongs to. In most cases, your account will only have one integration with OneFootball. However accounts with multiple different websites publishing content to OneFootball may have multiple integrations and should therefore select the correct integration for the correct website.
-
-| You can retrieve a full list of your registered integrations on OneFootball by taking the example below and doing the following:
-
-* Replace ``TOKEN`` in the header with your valid authentication token.
-
-.. example-code::
-
-   .. code-block:: shell
-
-      $ curl -X GET \
-          https://network-api.onefootball.com/v1/integrations/ \
-          -H "Content-Type: application/json" \
-          -H 'Authorization: Bearer TOKEN'
-
-   .. code-block:: python
-
-      import requests
-
-      headers = {
-          'Authorization': 'Bearer TOKEN',
-      }
-
-      response = requests.get(
-          'https://network-api.onefootball.com/v1/integrations/',
-          headers=headers
-      )
-
-   .. code-block:: go
-
-      req, err := http.NewRequest("GET", "https://network-api.onefootball.com/v1/integrations/", nil)
-      if err != nil {
-       // handle err
-      }
-      req.Header.Set("Content-Type", "application/json")
-      req.Header.Set("Authorization", "Bearer TOKEN")
-
-      resp, err := http.DefaultClient.Do(req)
-      if err != nil {
-       // handle err
-      }
-      defer resp.Body.Close()
-
-|
-
-
 Publishing content
 ------------------
 
@@ -210,7 +160,6 @@ Publishing an article
           -H 'Authorization: Bearer TOKEN' \
           -d '{
               "external_id": "ARTICLE_ID",
-              "integration_id": INTEGRATION_ID,
               "source_url": "ARTICLE_URL",
               "language": "en",
               "published": "2010-01-02T15:04:05Z",
@@ -233,7 +182,6 @@ Publishing an article
 
       data = {
           "external_id": "ARTICLE_ID",
-          "integration_id": INTEGRATION_ID,
           "source_url": "ARTICLE_URL",
           "language": "en",
           "published": "2010-01-02T15:04:05Z",
@@ -257,7 +205,6 @@ Publishing an article
 
       type Payload struct {
        ExternalID         string    `json:"external_id"`
-       IntegrationID      int       `json:"integration_id"`
        SourceURL          string    `json:"source_url"`
        Language           string    `json:"language"`
        Published          time.Time `json:"published"`
@@ -297,8 +244,6 @@ Publishing an article
 | Field              | Usage      | Description                                                                                                                                                                                                                                   |
 +====================+============+===============================================================================================================================================================================================================================================+
 | ``external_id``    | required   | The ID of the article as defined in your system. It must be unique (within a given language) within your own system.                                                                                                                          |
-+--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``integration_id`` | required   | The ID of the integration to which the article belongs as defined by OneFootball.                                                                                                                                                             |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``source_url``     | required   | The link to the article as published on your website. Place your homepage url if the article is not published anywhere else.                                                                                                                  |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -401,7 +346,6 @@ Updating an article
           -H 'Authorization: Bearer TOKEN' \
           -d '{
               "external_id": "ARTICLE_ID",
-              "integration_id": INTEGRATION_ID,
               "source_url": "ARTICLE_URL",
               "language":  "en",
               "published": "2010-01-02T15:04:05Z",
@@ -424,7 +368,6 @@ Updating an article
 
         data = {
             "external_id": "ARTICLE_ID",
-            "integration_id": INTEGRATION_ID,
             "source_url": "ARTICLE_URL",
             "language":  "en",
             "published": "2010-01-02T15:04:05Z",
@@ -447,7 +390,6 @@ Updating an article
 
       type Payload struct {
        ExternalID         string    `json:"external_id"`
-       IntegrationID      int       `json:"integration_id"`
        SourceURL          string    `json:"source_url"`
        Language           string    `json:"language"`
        Published          time.Time `json:"published"`
@@ -487,8 +429,6 @@ Updating an article
 | Field              | Usage      | Description                                                                                                                                                                                                                                   |
 +====================+============+===============================================================================================================================================================================================================================================+
 | ``external_id``    | required   | The ID of the article as defined in your system. It must be unique (within a given language) within your own system.                                                                                                                          |
-+--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``integration_id`` | required   | The ID of the integration to which the article belongs as defined by OneFootball.                                                                                                                                                             |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | ``source_url``     | required   | The link to the article as published on your website. Place your homepage url if the article is not published anywhere else.                                                                                                                  |
 +--------------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
